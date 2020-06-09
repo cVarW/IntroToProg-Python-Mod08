@@ -133,7 +133,7 @@ class FileProcessor:
         try:
             with open(file_name, "r") as objF:
                 for row in objF:
-                    list_of_product_objects.append(row.strip().split(","))     # removes '\n', etc
+                    list_of_product_objects.append(row.strip().split(","))
         except IOError:
             print("\tProduct database is empty.\nAdd new products.")
             with open(file_name, "a") as objF:
@@ -194,7 +194,6 @@ class IO:
         --------------------------------------------
         """)
         try:
-            #print("\t\t\t", list_of_product_objects[0])    # ,list_of_product_objects[0], list_of_product_objects[1])
             for row in list_of_product_objects:
                 print("\t\t" + row[0] + ", $" + row[1])
         except IOError as e:
@@ -241,11 +240,8 @@ try:
         if strChoice == "2":
             (strProdName, fltProdPrice) = IO.add_new_product()
             objProd = Product(strProdName, fltProdPrice)
-            # lstOfProductObjects += [objProd.__str__()]
             lstOfNewProd = [objProd.__str__().split(",")]
-            # lstOfProductObjects.append(lstOfNewProd)
             lstOfProductObjects += lstOfNewProd
-            # print(lstOfProductObjects[0])
             IO.print_Products_List(lstOfProductObjects)
 
         # 3 - let user save current data to file and exit program
